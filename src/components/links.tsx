@@ -7,10 +7,6 @@ import { Centered } from '@/components/centered'
 
 const links = [
   {
-    icon: faFilePdf,
-    url: '/resume.pdf'
-  },
-  {
     icon: faGithub,
     url: 'https://github.com/BozinovskiDaniel'
   },
