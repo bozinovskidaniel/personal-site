@@ -8,14 +8,13 @@ node_modules
 
 # production
 build
+/out/
+*.tsbuildinfo
 
 #development
 .cache
-.husky
 .vscode
 
-.next
-.next*
 .next/
 
 # misc

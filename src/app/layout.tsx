@@ -8,23 +8,26 @@ import { FunctionComponent, PropsWithChildren } from "react";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-    metadataBase: new URL("https://bozinovskidaniel.com"),
-    title: "Daniel Bozinovski | Software Engineer",
-    description: "Full Stack Software Engineer with over 3 years industry experience in fast-paced, high output startups recently focusing on the integration of AI & LLMs into software solutions",
-    icons: {
-        icon: "/mountain.png",
-    },
-    openGraph: {
-        title: "Daniel Bozinovski | Software Engineer",
-        description: "Full Stack Software Engineer with over 3 years industry experience in fast-paced, high output startups recently focusing on the integration of AI & LLMs into software solutions",
-        url: "https://bozinovskidaniel.com",
-    },
+  metadataBase: new URL("https://bozinovskidaniel.com"),
+  title: "Daniel Bozinovski",
+  description:
+    "Daniel Bozinovski is a software engineer at nib. Full-stack engineering, AI integrations, and selected projects.",
+  alternates: { canonical: "/" },
+  icons: {
+    icon: { url: "/mountain-mark.svg", type: "image/svg+xml" },
+  },
+  openGraph: {
+    title: "Daniel Bozinovski",
+    description:
+      "Software engineer at nib. Full-stack engineering, AI integrations, and selected projects.",
+    url: "https://bozinovskidaniel.com",
+  },
 };
 
 const RootLayout: FunctionComponent<PropsWithChildren> = ({ children }) => (
-    <html lang="en">
-        <body className={inter.className}>{children}</body>
-    </html>
+  <html lang="en">
+    <body className={inter.className}>{children}</body>
+  </html>
 );
 
 export default RootLayout;
