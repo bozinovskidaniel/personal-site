@@ -96,11 +96,16 @@ a:focus-visible {
   text-transform: lowercase;
 }
 
+.identity {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
 .personal-mark {
   display: block;
+  flex-shrink: 0;
   width: 36px;
   height: 36px;
-  margin-bottom: 38px;
 }
 .introduction h1 {
   margin: 0;
@@ -110,6 +115,10 @@ a:focus-visible {
 }
 .introduction h1 strong {
   font-weight: 600;
+}
+.introduction-role {
+  margin: 12px 0 0;
+  line-height: 25px;
 }
 .biography {
   width: 92%;
@@ -225,6 +234,18 @@ a:focus-visible {
   padding-bottom: 16px;
   border-bottom: 1px solid var(--rule);
 }
+.entry-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
+}
+.entry-copy {
+  display: flex;
+  flex: 1;
+  min-width: 0;
+  flex-direction: column;
+}
 .entry-list li:last-child .entry-content {
   border-bottom-color: transparent;
 }
@@ -232,14 +253,11 @@ a:focus-visible {
   border-bottom-color: transparent;
 }
 .entry-details {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 12px;
   color: var(--muted);
 }
 .entry-period {
   flex-shrink: 0;
+  color: var(--muted);
   font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
   font-size: 12px;
   font-variant-numeric: tabular-nums;
@@ -247,6 +265,7 @@ a:focus-visible {
 .entry-tag {
   flex-shrink: 0;
   align-self: center;
+  color: var(--muted);
   padding: 0 7px;
   border: 1px solid var(--rule);
   border-radius: 999px;
@@ -273,21 +292,12 @@ a:focus-visible {
   .biography {
     width: 100%;
   }
-  .entry-details {
-    column-gap: 24px;
-    row-gap: 6px;
-  }
   .entry-period {
     font-size: 11px;
   }
   .site-footer {
     margin-top: 64px;
     padding-bottom: 64px;
-  }
-}
-@media (max-width: 374px) {
-  .entry-details {
-    flex-wrap: wrap;
   }
 }
 @media (prefers-reduced-motion: reduce) {

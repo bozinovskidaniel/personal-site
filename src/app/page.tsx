@@ -7,18 +7,23 @@ export default function Page() {
   return (
     <main className="portfolio">
       <header className="introduction">
-        <Image
-          className="personal-mark"
-          src="/mountain-mark.svg"
-          alt=""
-          width={36}
-          height={36}
-          priority
-          unoptimized
-        />
-        <h1>
-          <strong>Daniel Bozinovski</strong> · software engineer based in sydney
-        </h1>
+        <div className="identity">
+          <Image
+            className="personal-mark"
+            src="/mountain-mark.svg"
+            alt=""
+            width={36}
+            height={36}
+            priority
+            unoptimized
+          />
+          <h1>
+            <strong>Daniel Bozinovski</strong>
+          </h1>
+        </div>
+        <p className="introduction-role">
+          software engineer based in sydney
+        </p>
         <div className="biography">
           <p>
             currently working in the identity and authentication space at{" "}
@@ -92,12 +97,12 @@ export default function Page() {
                     unoptimized
                   />
                 </span>
-                <span className="entry-content">
-                  <span className="entry-name">{entry.name}</span>
-                  <span className="entry-details">
-                    <span>{entry.role}</span>
-                    <span className="entry-period">{entry.period}</span>
+                <span className="entry-content entry-row">
+                  <span className="entry-copy">
+                    <span className="entry-name">{entry.name}</span>
+                    <span className="entry-details">{entry.role}</span>
                   </span>
+                  <span className="entry-period">{entry.period}</span>
                 </span>
               </a>
             </li>
@@ -125,12 +130,12 @@ export default function Page() {
                     unoptimized
                   />
                 </span>
-                <span className="entry-content">
-                  <span className="entry-name">{entry.name}</span>
-                  <span className="entry-details">
-                    <span>{entry.description}</span>
-                    <span className="entry-tag">{entry.category}</span>
+                <span className="entry-content entry-row">
+                  <span className="entry-copy">
+                    <span className="entry-name">{entry.name}</span>
+                    <span className="entry-details">{entry.description}</span>
                   </span>
+                  <span className="entry-tag">{entry.category}</span>
                 </span>
               </a>
             </li>
@@ -161,11 +166,17 @@ export default function Page() {
                   />
                 </span>
                 <span className="entry-content">
-                  <span className="entry-name">{entry.name}</span>
                   <span className="education-qualifications">
-                    {entry.qualifications.map((qualification) => (
-                      <span className="entry-details" key={qualification.name}>
-                        <span>{qualification.name}</span>
+                    {entry.qualifications.map((qualification, index) => (
+                      <span className="entry-row" key={qualification.name}>
+                        <span className="entry-copy">
+                          {index === 0 && (
+                            <span className="entry-name">{entry.name}</span>
+                          )}
+                          <span className="entry-details">
+                            {qualification.name}
+                          </span>
+                        </span>
                         {qualification.period && (
                           <span className="entry-period">
                             {qualification.period}

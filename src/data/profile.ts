@@ -39,6 +39,13 @@ export const projects = [
     href: "https://www.arcstrength.app/",
     image: "/images/arc.jpg",
   },
+  {
+    name: "Pneumonia Image Classifier",
+    description: "Deep learning for chest X-ray classification",
+    category: "ML",
+    href: "https://github.com/bozinovskidaniel/pneumonia-image-classifier",
+    image: "/images/pneumonia.svg",
+  },
 ] as const;
 
 export const education = [
