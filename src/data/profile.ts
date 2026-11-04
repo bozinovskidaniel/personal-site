@@ -34,7 +34,7 @@ export const work = [
 export const projects = [
   {
     name: "Arc",
-    description: "AI personal trainer for strength training",
+    description: "AI personal trainer",
     category: "iOS",
     href: "https://www.arcstrength.app/",
     image: "/images/arc.jpg",
