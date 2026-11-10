@@ -121,7 +121,10 @@ export default function Page() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <span className="entry-image company-image" aria-hidden="true">
+                <span
+                  className={`entry-image company-image ${"imageClassName" in entry ? entry.imageClassName : ""}`}
+                  aria-hidden="true"
+                >
                   <Image
                     src={entry.image}
                     alt=""

@@ -207,12 +207,29 @@ a:focus-visible {
   border-radius: 50%;
 }
 .entry-image img {
-  width: 36px;
-  height: 36px;
+  width: 28px;
+  height: 28px;
   object-fit: cover;
 }
+.nib-image,
 .inset-logo {
   background: #ffffff;
+}
+.workflow86-image {
+  background: #37352f;
+}
+.arc-image {
+  background: #e8fb67;
+}
+.nudge-image img {
+  width: 36px;
+  height: 36px;
+}
+.pneumonia-image {
+  background: #262626;
+}
+.unsw-image {
+  background: #ffed49;
 }
 .inset-logo img {
   width: 26px;
@@ -223,8 +240,8 @@ a:focus-visible {
   background: #232f3e;
 }
 .aws-image img {
-  width: 26px;
-  height: 26px;
+  width: 28px;
+  height: 28px;
 }
 .entry-content {
   display: flex;

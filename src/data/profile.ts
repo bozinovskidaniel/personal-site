@@ -5,6 +5,7 @@ export const work = [
     period: "2024 – Now",
     href: "https://www.nib.com.au/",
     image: "/images/nib-linkedin.jpg",
+    imageClassName: "nib-image",
   },
   {
     name: "Workflow86",
@@ -12,6 +13,7 @@ export const work = [
     period: "2022 – 2024",
     href: "https://www.workflow86.com/",
     image: "/images/workflow86.svg",
+    imageClassName: "workflow86-image",
   },
   {
     name: "Assess Threat",
@@ -38,6 +40,15 @@ export const projects = [
     category: "iOS",
     href: "https://www.arcstrength.app/",
     image: "/images/arc.jpg",
+    imageClassName: "arc-image",
+  },
+  {
+    name: "nudge",
+    description: "AI notebook that thinks alongside you",
+    category: "Web",
+    href: "https://thinkwithnudge.app/",
+    image: "/images/nudge.svg",
+    imageClassName: "nudge-image",
   },
   {
     name: "Pneumonia Image Classifier",
@@ -45,6 +56,7 @@ export const projects = [
     category: "ML",
     href: "https://github.com/bozinovskidaniel/pneumonia-image-classifier",
     image: "/images/pneumonia.svg",
+    imageClassName: "pneumonia-image",
   },
 ] as const;
 
@@ -62,6 +74,7 @@ export const education = [
     name: "University of New South Wales",
     href: "https://www.unsw.edu.au/",
     image: "/images/unsw-linkedin.jpg",
+    imageClassName: "unsw-image",
     qualifications: [
       {
         name: "Bachelor’s Degree, Computer Science & Engineering",
