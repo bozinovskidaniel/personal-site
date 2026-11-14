@@ -1,0 +1,107 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="600" viewBox="0 0 1200 600" role="img">
+  <style>
+    .bg { fill: #fafafa; }
+    .ink { fill: #404040; }
+    .muted { fill: #a3a3a3; }
+    .line { stroke: #a3a3a3; }
+    .map { fill: #ffffff; stroke: #d4d4d4; }
+    .map-front { fill: #ffffff; stroke: #737373; }
+    .node { fill: #ffffff; stroke: #737373; }
+    .track { fill: #ebebeb; }
+    .xray { fill: #1c1c1c; }
+    text { font-family: Inter, ui-sans-serif, -apple-system, system-ui, sans-serif; }
+    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+    @media (prefers-color-scheme: dark) {
+      .bg { fill: #141414; }
+      .ink { fill: #d4d4d4; }
+      .muted { fill: #737373; }
+      .line { stroke: #525252; }
+      .map { fill: #0a0a0a; stroke: #333333; }
+      .map-front { fill: #0a0a0a; stroke: #8a8a8a; }
+      .node { fill: #0a0a0a; stroke: #8a8a8a; }
+      .track { fill: #262626; }
+      .xray { fill: #262626; }
+    }
+  </style>
+  <defs>
+    <radialGradient id="opacity" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.55" />
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0" />
+    </radialGradient>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M1 1l7 4-7 4" fill="none" stroke="#a3a3a3" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+    </marker>
+  </defs>
+
+  <rect class="bg" width="1200" height="600" />
+
+  <!-- Chest X-ray input -->
+  <rect class="xray" x="80" y="150" width="240" height="300" rx="14" />
+  <g transform="translate(200 300) scale(9) translate(-18 -17)" fill="#ffffff" fill-opacity="0.08" stroke="#f5f5f0" stroke-opacity="0.85" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke">
+    <path d="M15 13c-1.5-1.5-5.5 3-7 7.5-1 3-1 5.5 1.5 5.5 1.8 0 3.8-1.2 5.5-2.3Z" vector-effect="non-scaling-stroke" />
+    <path d="M21 13c1.5-1.5 5.5 3 7 7.5 1 3 1 5.5-1.5 5.5-1.8 0-3.8-1.2-5.5-2.3Z" vector-effect="non-scaling-stroke" />
+    <path d="M18 8v6.5m0 0-5.5 5m5.5-5 5.5 5" fill="none" vector-effect="non-scaling-stroke" />
+  </g>
+  <ellipse cx="248" cy="352" rx="38" ry="30" fill="url(#opacity)" />
+  <text class="muted mono" x="200" y="492" font-size="17" text-anchor="middle">128 × 128 × 3</text>
+
+  <line class="line" x1="334" y1="300" x2="384" y2="300" stroke-width="2" marker-end="url(#arrow)" />
+
+  <!-- Convolution + pooling: maps shrink and stack deeper -->
+  <g stroke-width="2">
+    <rect class="map" x="436" y="189" width="150" height="150" rx="6" />
+    <rect class="map" x="424" y="201" width="150" height="150" rx="6" />
+    <rect class="map" x="412" y="213" width="150" height="150" rx="6" />
+    <rect class="map-front" x="400" y="225" width="150" height="150" rx="6" />
+  </g>
+
+  <line class="line" x1="598" y1="300" x2="622" y2="300" stroke-width="2" marker-end="url(#arrow)" />
+
+  <g stroke-width="2">
+    <rect class="map" x="680" y="200" width="100" height="100" rx="5" />
+    <rect class="map" x="670" y="210" width="100" height="100" rx="5" />
+    <rect class="map" x="660" y="220" width="100" height="100" rx="5" />
+    <rect class="map" x="650" y="230" width="100" height="100" rx="5" />
+    <rect class="map" x="640" y="240" width="100" height="100" rx="5" />
+    <rect class="map-front" x="630" y="250" width="100" height="100" rx="5" />
+  </g>
+
+  <line class="line" x1="788" y1="300" x2="802" y2="300" stroke-width="2" marker-end="url(#arrow)" />
+
+  <g stroke-width="2">
+    <rect class="map" x="866" y="214" width="60" height="60" rx="4" />
+    <rect class="map" x="858" y="222" width="60" height="60" rx="4" />
+    <rect class="map" x="850" y="230" width="60" height="60" rx="4" />
+    <rect class="map" x="842" y="238" width="60" height="60" rx="4" />
+    <rect class="map" x="834" y="246" width="60" height="60" rx="4" />
+    <rect class="map" x="826" y="254" width="60" height="60" rx="4" />
+    <rect class="map" x="818" y="262" width="60" height="60" rx="4" />
+    <rect class="map-front" x="810" y="270" width="60" height="60" rx="4" />
+  </g>
+
+  <text class="muted mono" x="663" y="492" font-size="17" text-anchor="middle">convolution + pooling</text>
+
+  <line class="line" x1="934" y1="300" x2="950" y2="300" stroke-width="2" marker-end="url(#arrow)" />
+
+  <!-- Dense layer -->
+  <g stroke-width="2">
+    <circle class="node" cx="968" cy="230" r="8" />
+    <circle class="node" cx="968" cy="258" r="8" />
+    <circle class="node" cx="968" cy="286" r="8" />
+    <circle class="node" cx="968" cy="314" r="8" />
+    <circle class="node" cx="968" cy="342" r="8" />
+    <circle class="node" cx="968" cy="370" r="8" />
+  </g>
+  <text class="muted mono" x="968" y="492" font-size="17" text-anchor="middle">dense</text>
+
+  <!-- Prediction -->
+  <text class="ink" x="1000" y="282" font-size="18" font-weight="600">pneumonia</text>
+  <text class="ink mono" x="1140" y="282" font-size="16" text-anchor="end">0.99</text>
+  <rect class="track" x="1000" y="292" width="140" height="6" rx="3" />
+  <rect class="ink" x="1000" y="292" width="139" height="6" rx="3" />
+
+  <text class="muted" x="1000" y="340" font-size="18">normal</text>
+  <text class="muted mono" x="1140" y="340" font-size="16" text-anchor="end">0.01</text>
+  <rect class="track" x="1000" y="350" width="140" height="6" rx="3" />
+  <rect class="muted" x="1000" y="350" width="3" height="6" rx="1.5" />
+</svg>

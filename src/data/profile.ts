@@ -73,6 +73,19 @@ export const projects: Project[] = [
     imageClassName: "nudge-image",
   },
   {
+    name: "STM32 Peripheral Drivers",
+    description: "Register-level GPIO, UART and timer drivers",
+    category: "Embedded",
+    slug: "stm32-peripheral-drivers",
+    meta: "C, ARM Cortex-M, bare metal",
+    image: "/images/stm32.svg",
+    imageClassName: "stm32-image",
+    hero: {
+      src: "/images/projects/stm32-hero.svg",
+      alt: "Diagram of the GPIOA_MODER register as 16 two-bit fields, one per pin. Pin 5's field is set to 01 by the line GPIOA->MODER |= (1 << 10), making PA5 an output that drives an LED.",
+    },
+  },
+  {
     name: "Pneumonia Image Classifier",
     description: "Deep learning for chest X-ray classification",
     category: "ML",
@@ -81,6 +94,10 @@ export const projects: Project[] = [
     meta: "Keras, MobileNet, scikit-learn",
     image: "/images/pneumonia.svg",
     imageClassName: "pneumonia-image",
+    hero: {
+      src: "/images/projects/pneumonia-hero.svg",
+      alt: "Diagram of the model: a 128 by 128 chest X-ray with an opaque patch passes through three rounds of convolution and pooling, then a dense layer, ending in a prediction of pneumonia at 0.99 and normal at 0.01.",
+    },
   },
 ];
 

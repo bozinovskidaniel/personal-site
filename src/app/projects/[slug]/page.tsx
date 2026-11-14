@@ -23,6 +23,11 @@ export function generateMetadata({ params }: Params): Metadata {
   if (!project) return {};
 
   const title = `${project.name} · Daniel Bozinovski`;
+  // Social sites don't render SVG previews, so only raster heroes are shared.
+  const shareImage =
+    project.hero && !project.hero.src.endsWith(".svg")
+      ? [project.hero.src]
+      : undefined;
   return {
     title,
     description: project.description,
@@ -31,7 +36,7 @@ export function generateMetadata({ params }: Params): Metadata {
       title,
       description: project.description,
       url: `/projects/${project.slug}`,
-      images: project.hero ? [project.hero.src] : undefined,
+      images: shareImage,
     },
   };
 }
@@ -60,8 +65,8 @@ export default async function ProjectPage({ params }: Params) {
             className="project-hero"
             src={project.hero.src}
             alt={project.hero.alt}
-            width={1120}
-            height={630}
+            width={1200}
+            height={600}
             priority
             unoptimized
           />
