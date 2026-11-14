@@ -5,6 +5,8 @@ import { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { FunctionComponent, PropsWithChildren } from "react";
 
+import { ViewTransitionListener } from "@/components/view-transitions";
+
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -26,7 +28,10 @@ export const metadata: Metadata = {
 
 const RootLayout: FunctionComponent<PropsWithChildren> = ({ children }) => (
   <html lang="en">
-    <body className={inter.className}>{children}</body>
+    <body className={inter.className}>
+      <ViewTransitionListener />
+      {children}
+    </body>
   </html>
 );
 

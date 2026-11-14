@@ -33,7 +33,29 @@ export const work = [
   },
 ];
 
-export const projects = [
+export type Project = {
+  name: string;
+  description: string;
+  category: string;
+  image: string;
+  imageClassName?: string;
+} & (
+  | {
+      /** Opens an external site in a new tab. */
+      href: string;
+      slug?: never;
+    }
+  | {
+      /** Opens the write-up at /projects/<slug>, from src/content/projects/<slug>.mdx. */
+      slug: string;
+      href?: never;
+      github?: string;
+      meta?: string;
+      hero?: { src: string; alt: string };
+    }
+);
+
+export const projects: Project[] = [
   {
     name: "Arc",
     description: "AI personal trainer",
@@ -54,11 +76,18 @@ export const projects = [
     name: "Pneumonia Image Classifier",
     description: "Deep learning for chest X-ray classification",
     category: "ML",
-    href: "https://github.com/bozinovskidaniel/pneumonia-image-classifier",
+    slug: "pneumonia-classifier",
+    github: "https://github.com/bozinovskidaniel/pneumonia-image-classifier",
+    meta: "Keras, MobileNet, scikit-learn",
     image: "/images/pneumonia.svg",
     imageClassName: "pneumonia-image",
   },
-] as const;
+];
+
+export const writeups = projects.filter(
+  (project): project is Extract<Project, { slug: string }> =>
+    project.slug !== undefined,
+);
 
 export const education = [
   {

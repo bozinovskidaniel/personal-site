@@ -1,7 +1,9 @@
 import Image from "next/image";
 
 import { Links } from "@/components/links";
+import { TransitionLink } from "@/components/view-transitions";
 import { education, projects, work } from "@/data/profile";
+import { projectTransitionNames } from "@/lib/slug";
 
 export default function Page() {
   return (
@@ -21,9 +23,7 @@ export default function Page() {
             <strong>Daniel Bozinovski</strong>
           </h1>
         </div>
-        <p className="introduction-role">
-          software engineer based in sydney
-        </p>
+        <p className="introduction-role">software engineer based in sydney</p>
         <div className="biography">
           <p>
             currently working in the identity and authentication space at{" "}
@@ -68,8 +68,7 @@ export default function Page() {
             .
           </p>
           <p>
-            i’m focused on solving complex customer and business problems
-            through ai and automation.
+            focused on solving complex customer and business problems.
           </p>
         </div>
         <Links />
@@ -113,17 +112,16 @@ export default function Page() {
       <section className="profile-section" aria-labelledby="projects-heading">
         <h2 id="projects-heading">Projects</h2>
         <ul className="entry-list">
-          {projects.map((entry) => (
-            <li key={entry.name}>
-              <a
-                className="profile-entry"
-                href={entry.href}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+          {projects.map((entry) => {
+            const names = entry.slug
+              ? projectTransitionNames(entry.slug)
+              : undefined;
+            const content = (
+              <>
                 <span
-                  className={`entry-image company-image ${"imageClassName" in entry ? entry.imageClassName : ""}`}
+                  className={`entry-image company-image ${entry.imageClassName ?? ""}`}
                   aria-hidden="true"
+                  style={names?.logo}
                 >
                   <Image
                     src={entry.image}
@@ -135,14 +133,40 @@ export default function Page() {
                 </span>
                 <span className="entry-content entry-row">
                   <span className="entry-copy">
-                    <span className="entry-name">{entry.name}</span>
+                    <span className="entry-name">
+                      <span className="transition-title" style={names?.title}>
+                        {entry.name}
+                      </span>
+                    </span>
                     <span className="entry-details">{entry.description}</span>
                   </span>
                   <span className="entry-tag">{entry.category}</span>
                 </span>
-              </a>
-            </li>
-          ))}
+              </>
+            );
+
+            return (
+              <li key={entry.name}>
+                {entry.slug ? (
+                  <TransitionLink
+                    className="profile-entry"
+                    href={`/projects/${entry.slug}`}
+                  >
+                    {content}
+                  </TransitionLink>
+                ) : (
+                  <a
+                    className="profile-entry"
+                    href={entry.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {content}
+                  </a>
+                )}
+              </li>
+            );
+          })}
         </ul>
       </section>
 

@@ -294,6 +294,394 @@ a:focus-visible {
   display: grid;
   gap: 12px;
 }
+.back-link {
+  display: inline-block;
+  /* 44px tall tap target without moving the text. */
+  margin: -12px 0;
+  padding: 12px 0;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 20px;
+  transition: color 150ms ease;
+}
+.back-link:hover {
+  color: var(--text);
+}
+
+.project-header {
+  margin-top: 32px;
+}
+.project-mark-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.project-mark-row .entry-image {
+  margin-top: 0;
+}
+.project-header h1 {
+  margin: 16px 0 0;
+  font-size: inherit;
+  font-weight: 600;
+  line-height: 25px;
+}
+.project-description {
+  margin: 4px 0 0;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 20px;
+}
+.project-body {
+  margin-top: 40px;
+}
+.project-body > :first-child {
+  margin-top: 0;
+}
+
+.section-nav {
+  display: none;
+}
+.section-nav-label {
+  margin: 0 0 8px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 18px;
+  text-transform: lowercase;
+}
+.section-nav ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-left: 1px solid var(--rule);
+}
+.section-nav a {
+  display: block;
+  margin-left: -1px;
+  padding: 4px 0 4px 12px;
+  border-left: 1px solid transparent;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 20px;
+  text-transform: lowercase;
+  transition:
+    color 150ms ease,
+    border-color 150ms ease;
+}
+.section-nav a:hover {
+  color: var(--text);
+}
+.section-nav a[aria-current] {
+  border-left-color: var(--text);
+  color: var(--text);
+}
+.section-nav a:focus-visible {
+  outline-offset: 2px;
+}
+
+/* Two columns need both width and height: on a landscape phone the pinned
+   sidebar would have barely any room, so those get the single column. */
+@media (min-width: 768px) and (min-height: 560px) {
+  .project-page {
+    max-width: 880px;
+    display: grid;
+    grid-template-columns: 220px minmax(0, 1fr);
+    column-gap: 72px;
+    align-items: start;
+  }
+  .project-sidebar {
+    position: sticky;
+    top: 120px;
+    max-height: calc(100vh - 160px);
+    /* The padding gives the GitHub button's -12px edge and focus outlines
+       room inside the scroll box, so the column never scrolls sideways. */
+    margin: -8px -12px;
+    padding: 8px 12px;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+  .project-body {
+    margin-top: 0;
+  }
+  .project-page .site-footer {
+    grid-column: 1 / -1;
+  }
+  .section-nav {
+    display: block;
+    margin-top: 40px;
+  }
+  .article h2 {
+    scroll-margin-top: 120px;
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Page transitions between the homepage and project write-ups.
+   The logo and title carry a shared view-transition-name and glide
+   between pages; everything else fades. */
+.transition-title {
+  /* A named element can't wrap across lines, or the browser skips the transition. */
+  display: inline-block;
+}
+html.has-navigated .portfolio > * {
+  animation: none;
+}
+::view-transition-group(*) {
+  animation-duration: 400ms;
+  animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+}
+/* Keep each snapshot's aspect ratio. Without this the title, which changes
+   size and weight between pages, is stretched to the in-between box. */
+::view-transition-old(*),
+::view-transition-new(*) {
+  height: 100%;
+}
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 260ms;
+}
+.icon-button {
+  display: grid;
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  margin-right: -12px;
+  place-items: center;
+  border-radius: 13px;
+  transition: background-color 150ms ease;
+}
+.icon-button svg {
+  width: 18px;
+  height: 18px;
+}
+.icon-button:hover {
+  background: var(--hover);
+}
+.project-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin: 12px 0 0;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 20px;
+}
+.project-hero {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin-top: 32px;
+  border: 1px solid var(--rule);
+  border-radius: 12px;
+}
+
+.article {
+  margin-top: 32px;
+  color: var(--muted);
+  line-height: 25px;
+}
+.article > :first-child {
+  margin-top: 0;
+}
+.article p,
+.article ul,
+.article ol {
+  margin: 0 0 16px;
+}
+.article ul,
+.article ol {
+  padding-left: 20px;
+}
+.article ul {
+  list-style: disc;
+}
+.article ol {
+  list-style: decimal;
+}
+.article li + li {
+  margin-top: 4px;
+}
+.article h2,
+.article h3 {
+  margin: 40px 0 8px;
+  color: var(--text);
+  font-weight: 600;
+  text-transform: lowercase;
+}
+.article h2 {
+  font-size: 16px;
+  line-height: 25px;
+}
+.article h3 {
+  margin-top: 28px;
+  font-size: 14px;
+  line-height: 20px;
+}
+.article strong {
+  color: var(--text);
+  font-weight: 600;
+}
+.article a {
+  color: var(--text);
+  text-decoration: underline;
+  text-decoration-color: var(--link-underline);
+}
+.article a:hover {
+  text-decoration-color: currentColor;
+}
+.article code {
+  padding: 1px 5px;
+  border-radius: 5px;
+  background: var(--surface);
+  color: var(--text);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 13px;
+}
+.article pre {
+  margin: 0 0 16px;
+  padding: 12px 14px;
+  overflow-x: auto;
+  border-radius: 8px;
+  background: var(--surface);
+  line-height: 20px;
+}
+.article pre code {
+  padding: 0;
+  background: none;
+}
+.article img {
+  display: block;
+  /* Small diagrams stay at their natural size instead of upscaling blurrily. */
+  max-width: 100%;
+  height: auto;
+  margin: 24px 0;
+  border: 1px solid var(--rule);
+  border-radius: 12px;
+  /* The source PNGs are transparent; keep black text readable in dark mode. */
+  background: #ffffff;
+}
+.article-figure {
+  margin: 24px 0;
+}
+.article-figure a {
+  display: block;
+  width: fit-content;
+  max-width: 100%;
+  border-radius: 12px;
+  text-decoration: none;
+}
+.article-figure img {
+  margin: 0;
+  transition: border-color 150ms ease;
+}
+.article-figure a:hover img {
+  border-color: var(--link-underline);
+}
+.article-figure figcaption {
+  margin-top: 8px;
+  font-size: 13px;
+  line-height: 18px;
+}
+
+/* Step diagrams: boxes joined by arrows, wrapping on narrow screens. */
+.article .pipeline {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin: 24px 0;
+  padding: 0;
+  list-style: none;
+}
+.article .pipeline li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+}
+.article .pipeline span {
+  padding: 5px 10px;
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--text);
+  font-size: 13px;
+  line-height: 18px;
+  white-space: nowrap;
+}
+/* The arrow leads each step, so a wrapped line starts with "→ step". */
+.article .pipeline li + li::before {
+  content: "→";
+  color: var(--muted);
+  font-size: 13px;
+}
+
+/* Data tables. */
+.table-scroll {
+  margin: 24px 0;
+  overflow-x: auto;
+}
+.article table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  line-height: 18px;
+}
+.article caption {
+  margin-bottom: 8px;
+  color: var(--muted);
+  text-align: left;
+}
+.article th,
+.article td {
+  padding: 8px 12px 8px 0;
+  border-bottom: 1px solid var(--rule);
+  text-align: left;
+  vertical-align: top;
+}
+.article th {
+  color: var(--text);
+  font-weight: 600;
+}
+.article th:last-child,
+.article td:last-child {
+  padding-right: 0;
+}
+/* Number columns line up on the decimal point. */
+.article td:not(:first-child) {
+  font-variant-numeric: tabular-nums;
+}
+.article tbody tr:last-child td {
+  border-bottom: 0;
+}
+.article .table-highlight td {
+  color: var(--text);
+  font-weight: 600;
+}
+@media (max-width: 420px) {
+  .article table {
+    font-size: 12px;
+  }
+  .article th,
+  .article td {
+    padding-right: 8px;
+  }
+}
+.article blockquote {
+  margin: 0 0 16px;
+  padding-left: 14px;
+  border-left: 2px solid var(--rule);
+}
+.article hr {
+  margin: 32px 0;
+  border: 0;
+  border-top: 1px solid var(--rule);
+}
+
 .site-footer {
   margin-top: 80px;
   padding-bottom: 120px;
