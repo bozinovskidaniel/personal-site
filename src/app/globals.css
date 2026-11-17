@@ -219,7 +219,11 @@ a:focus-visible {
   background: #37352f;
 }
 .arc-image {
-  background: #e8fb67;
+  background: #209bee;
+}
+.arc-image img {
+  width: 90%;
+  height: 90%;
 }
 .nudge-image img {
   width: 36px;
