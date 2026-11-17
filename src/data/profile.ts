@@ -61,7 +61,7 @@ export const projects: Project[] = [
     description: "AI personal trainer",
     category: "iOS",
     href: "https://www.arcstrength.app/",
-    image: "/images/arc.jpg",
+    image: "/images/arc.png",
     imageClassName: "arc-image",
   },
   {
